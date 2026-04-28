@@ -1904,6 +1904,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 3512440517220954456, guid: 642af36c9e9251c4181a7327b929cb15, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: b3ae2273451ef0143a935a5ad49faf7a, type: 2}
     - target: {fileID: 3827857772109923422, guid: 642af36c9e9251c4181a7327b929cb15, type: 3}
       propertyPath: m_ExcludeLayers.m_Bits
       value: 0
