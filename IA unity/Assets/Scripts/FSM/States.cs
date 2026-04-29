@@ -5,6 +5,8 @@ public class States<T>
 {
     Dictionary<T, States<T>> _dic = new Dictionary<T, States<T>>();
 
+    protected EnemyStateController _controller;
+    
     public virtual void Awake() { }
 
     public virtual void Exceute() { }
@@ -36,10 +38,6 @@ public class States<T>
         }
         return null;
     }
-
-
-
-    protected EnemyStateController _controller;
 
     public void SetController(EnemyStateController controller)
     {

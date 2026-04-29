@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PatrolState<T> : States<T>
@@ -11,10 +9,8 @@ public class PatrolState<T> : States<T>
 
     public override void Exceute()
     {
-        Debug.Log("estoy re de la patrulla");
         var controller = _controller;
 
-        
         controller.currentEnergy -= controller.energyDrain * Time.deltaTime;
 
         if (controller.currentEnergy <= 0)
@@ -23,41 +19,69 @@ public class PatrolState<T> : States<T>
             return;
         }
 
-        
+        controller.SearchTarget();
+
+        if (controller.target != null)
+        {
+            controller._fsm.Transition("chase");
+            return;
+        }
+
+        if (controller.waypoints == null || controller.waypoints.Length == 0)
+        {
+            controller.speedAnimacion = 0f;
+            return;
+        }
+
         Transform targetWp = controller.waypoints[controller.currentWaypointIndex];
 
-        Vector3 dir = (targetWp.position - controller.transform.position).normalized;
-        controller.transform.position += dir * controller.speed * Time.deltaTime;
-
-        
-        if (Vector3.Distance(controller.transform.position, targetWp.position) < 0.2f)
+        if (targetWp == null)
         {
             controller.currentWaypointIndex++;
 
             if (controller.currentWaypointIndex >= controller.waypoints.Length)
-                controller.currentWaypointIndex = 0;
-        }
-
-        
-        if (controller.target != null)
-        {
-            float dist = Vector3.Distance(controller.transform.position, controller.target.position);
-
-            if (dist <= controller.visionRange)
             {
-                controller._fsm.Transition("chase");
+                controller.currentWaypointIndex = 0;
             }
+
+            return;
         }
+
+        Vector3 dir = targetWp.position - controller.transform.position;
+        dir.y = 0;
+
+        if (dir.magnitude < 0.2f)
+        {
+            controller.currentWaypointIndex++;
+
+            if (controller.currentWaypointIndex >= controller.waypoints.Length)
+            {
+                controller.currentWaypointIndex = 0;
+            }
+
+            return;
+        }
+
+        dir = dir.normalized;
+
+        controller.transform.position += dir * controller.speed * Time.deltaTime;
 
         if (dir != Vector3.zero)
         {
             Quaternion targetRotation = Quaternion.LookRotation(dir);
-            _controller.transform.rotation = Quaternion.Slerp(
-                _controller.transform.rotation,
+
+            controller.transform.rotation = Quaternion.Slerp(
+                controller.transform.rotation,
                 targetRotation,
-                _controller.rotationSpeed * Time.deltaTime
+                controller.rotationSpeed * Time.deltaTime
             );
         }
-        _controller.speedAnimacion = 1f;
+
+        controller.speedAnimacion = 1f;
+    }
+
+    public override void Sleep()
+    {
+        Debug.Log("Patrol Sleep");
     }
 }

@@ -131,9 +131,25 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 1579030925120766178, guid: 4fdd9e247ee2e1b40afb8373d6755873, type: 3}
+      propertyPath: speed
+      value: 2.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1579030925120766178, guid: 4fdd9e247ee2e1b40afb8373d6755873, type: 3}
       propertyPath: target
       value: 
       objectReference: {fileID: 1371548872}
+    - target: {fileID: 1579030925120766178, guid: 4fdd9e247ee2e1b40afb8373d6755873, type: 3}
+      propertyPath: visionRange
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1579030925120766178, guid: 4fdd9e247ee2e1b40afb8373d6755873, type: 3}
+      propertyPath: restDuration
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1579030925120766178, guid: 4fdd9e247ee2e1b40afb8373d6755873, type: 3}
+      propertyPath: boidMask.m_Bits
+      value: 256
+      objectReference: {fileID: 0}
     - target: {fileID: 1579030925120766178, guid: 4fdd9e247ee2e1b40afb8373d6755873, type: 3}
       propertyPath: waypoints.Array.data[0]
       value: 
@@ -220,9 +236,69 @@ PrefabInstance:
       value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 557055197128652805, guid: a4e81aa1c27efc442845637e4b99619d, type: 3}
+      propertyPath: _Hunter
+      value: 
+      objectReference: {fileID: 1197226333}
+    - target: {fileID: 557055197128652805, guid: a4e81aa1c27efc442845637e4b99619d, type: 3}
       propertyPath: _Target
       value: 
       objectReference: {fileID: 1197226333}
+    - target: {fileID: 557055197128652805, guid: a4e81aa1c27efc442845637e4b99619d, type: 3}
+      propertyPath: _AreaCenter
+      value: 
+      objectReference: {fileID: 522472377}
+    - target: {fileID: 557055197128652805, guid: a4e81aa1c27efc442845637e4b99619d, type: 3}
+      propertyPath: _AreaRadius
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 557055197128652805, guid: a4e81aa1c27efc442845637e4b99619d, type: 3}
+      propertyPath: _AreaSize.x
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 557055197128652805, guid: a4e81aa1c27efc442845637e4b99619d, type: 3}
+      propertyPath: _AreaSize.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 557055197128652805, guid: a4e81aa1c27efc442845637e4b99619d, type: 3}
+      propertyPath: _AreaSize.z
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 557055197128652805, guid: a4e81aa1c27efc442845637e4b99619d, type: 3}
+      propertyPath: _EatDistance
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 557055197128652805, guid: a4e81aa1c27efc442845637e4b99619d, type: 3}
+      propertyPath: _LimitRadius
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 557055197128652805, guid: a4e81aa1c27efc442845637e4b99619d, type: 3}
+      propertyPath: _BoidMask.m_Bits
+      value: 256
+      objectReference: {fileID: 0}
+    - target: {fileID: 557055197128652805, guid: a4e81aa1c27efc442845637e4b99619d, type: 3}
+      propertyPath: _FoodMask.m_Bits
+      value: 512
+      objectReference: {fileID: 0}
+    - target: {fileID: 557055197128652805, guid: a4e81aa1c27efc442845637e4b99619d, type: 3}
+      propertyPath: _UseCircularArea
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 557055197128652805, guid: a4e81aa1c27efc442845637e4b99619d, type: 3}
+      propertyPath: _ArriveSlowRadius
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 557055197128652805, guid: a4e81aa1c27efc442845637e4b99619d, type: 3}
+      propertyPath: _UseCircularLimit
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 557055197128652805, guid: a4e81aa1c27efc442845637e4b99619d, type: 3}
+      propertyPath: _FoodDetectionDistance
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 557055197128652805, guid: a4e81aa1c27efc442845637e4b99619d, type: 3}
+      propertyPath: _HunterDetectionDistance
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 8976791743614379783, guid: a4e81aa1c27efc442845637e4b99619d, type: 3}
       propertyPath: m_LocalPosition.x
       value: 3.9430318
@@ -267,7 +343,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 5166961083151609938, guid: a4e81aa1c27efc442845637e4b99619d, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -285,9 +362,85 @@ PrefabInstance:
       value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 557055197128652805, guid: a4e81aa1c27efc442845637e4b99619d, type: 3}
+      propertyPath: _Hunter
+      value: 
+      objectReference: {fileID: 1197226333}
+    - target: {fileID: 557055197128652805, guid: a4e81aa1c27efc442845637e4b99619d, type: 3}
       propertyPath: _Target
       value: 
       objectReference: {fileID: 1197226333}
+    - target: {fileID: 557055197128652805, guid: a4e81aa1c27efc442845637e4b99619d, type: 3}
+      propertyPath: _AreaCenter
+      value: 
+      objectReference: {fileID: 522472377}
+    - target: {fileID: 557055197128652805, guid: a4e81aa1c27efc442845637e4b99619d, type: 3}
+      propertyPath: _AreaRadius
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 557055197128652805, guid: a4e81aa1c27efc442845637e4b99619d, type: 3}
+      propertyPath: _AreaSize.x
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 557055197128652805, guid: a4e81aa1c27efc442845637e4b99619d, type: 3}
+      propertyPath: _AreaSize.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 557055197128652805, guid: a4e81aa1c27efc442845637e4b99619d, type: 3}
+      propertyPath: _AreaSize.z
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 557055197128652805, guid: a4e81aa1c27efc442845637e4b99619d, type: 3}
+      propertyPath: _EatDistance
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 557055197128652805, guid: a4e81aa1c27efc442845637e4b99619d, type: 3}
+      propertyPath: _LimitRadius
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 557055197128652805, guid: a4e81aa1c27efc442845637e4b99619d, type: 3}
+      propertyPath: _CohesionWeight
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 557055197128652805, guid: a4e81aa1c27efc442845637e4b99619d, type: 3}
+      propertyPath: _AlignmentWeight
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 557055197128652805, guid: a4e81aa1c27efc442845637e4b99619d, type: 3}
+      propertyPath: _BoidMask.m_Bits
+      value: 256
+      objectReference: {fileID: 0}
+    - target: {fileID: 557055197128652805, guid: a4e81aa1c27efc442845637e4b99619d, type: 3}
+      propertyPath: _FoodMask.m_Bits
+      value: 512
+      objectReference: {fileID: 0}
+    - target: {fileID: 557055197128652805, guid: a4e81aa1c27efc442845637e4b99619d, type: 3}
+      propertyPath: _UseCircularArea
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 557055197128652805, guid: a4e81aa1c27efc442845637e4b99619d, type: 3}
+      propertyPath: _ArriveSlowRadius
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 557055197128652805, guid: a4e81aa1c27efc442845637e4b99619d, type: 3}
+      propertyPath: _SeparationWeight
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 557055197128652805, guid: a4e81aa1c27efc442845637e4b99619d, type: 3}
+      propertyPath: _UseCircularLimit
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 557055197128652805, guid: a4e81aa1c27efc442845637e4b99619d, type: 3}
+      propertyPath: _DetectionDistance
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 557055197128652805, guid: a4e81aa1c27efc442845637e4b99619d, type: 3}
+      propertyPath: _FoodDetectionDistance
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 557055197128652805, guid: a4e81aa1c27efc442845637e4b99619d, type: 3}
+      propertyPath: _HunterDetectionDistance
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 8976791743614379783, guid: a4e81aa1c27efc442845637e4b99619d, type: 3}
       propertyPath: m_LocalPosition.x
       value: 6.82
@@ -440,7 +593,8 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 8
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 5166961083151609938, guid: a4e81aa1c27efc442845637e4b99619d, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -506,7 +660,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: d566c909a757f4249a7d30155ec04869, type: 2}
+  - {fileID: 2100000, guid: 71703efa66edca04db79ea6b65ea0acd, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -547,6 +701,37 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 20, y: 1, z: 20}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &522472376
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 522472377}
+  m_Layer: 0
+  m_Name: Center
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &522472377
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 522472376}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -1.59, y: 1.37, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -595,9 +780,85 @@ PrefabInstance:
       value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 557055197128652805, guid: a4e81aa1c27efc442845637e4b99619d, type: 3}
+      propertyPath: _Hunter
+      value: 
+      objectReference: {fileID: 1197226333}
+    - target: {fileID: 557055197128652805, guid: a4e81aa1c27efc442845637e4b99619d, type: 3}
       propertyPath: _Target
       value: 
       objectReference: {fileID: 1197226333}
+    - target: {fileID: 557055197128652805, guid: a4e81aa1c27efc442845637e4b99619d, type: 3}
+      propertyPath: _AreaCenter
+      value: 
+      objectReference: {fileID: 522472377}
+    - target: {fileID: 557055197128652805, guid: a4e81aa1c27efc442845637e4b99619d, type: 3}
+      propertyPath: _AreaRadius
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 557055197128652805, guid: a4e81aa1c27efc442845637e4b99619d, type: 3}
+      propertyPath: _AreaSize.x
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 557055197128652805, guid: a4e81aa1c27efc442845637e4b99619d, type: 3}
+      propertyPath: _AreaSize.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 557055197128652805, guid: a4e81aa1c27efc442845637e4b99619d, type: 3}
+      propertyPath: _AreaSize.z
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 557055197128652805, guid: a4e81aa1c27efc442845637e4b99619d, type: 3}
+      propertyPath: _EatDistance
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 557055197128652805, guid: a4e81aa1c27efc442845637e4b99619d, type: 3}
+      propertyPath: _LimitRadius
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 557055197128652805, guid: a4e81aa1c27efc442845637e4b99619d, type: 3}
+      propertyPath: _CohesionWeight
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 557055197128652805, guid: a4e81aa1c27efc442845637e4b99619d, type: 3}
+      propertyPath: _AlignmentWeight
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 557055197128652805, guid: a4e81aa1c27efc442845637e4b99619d, type: 3}
+      propertyPath: _BoidMask.m_Bits
+      value: 256
+      objectReference: {fileID: 0}
+    - target: {fileID: 557055197128652805, guid: a4e81aa1c27efc442845637e4b99619d, type: 3}
+      propertyPath: _FoodMask.m_Bits
+      value: 512
+      objectReference: {fileID: 0}
+    - target: {fileID: 557055197128652805, guid: a4e81aa1c27efc442845637e4b99619d, type: 3}
+      propertyPath: _UseCircularArea
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 557055197128652805, guid: a4e81aa1c27efc442845637e4b99619d, type: 3}
+      propertyPath: _ArriveSlowRadius
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 557055197128652805, guid: a4e81aa1c27efc442845637e4b99619d, type: 3}
+      propertyPath: _SeparationWeight
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 557055197128652805, guid: a4e81aa1c27efc442845637e4b99619d, type: 3}
+      propertyPath: _UseCircularLimit
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 557055197128652805, guid: a4e81aa1c27efc442845637e4b99619d, type: 3}
+      propertyPath: _DetectionDistance
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 557055197128652805, guid: a4e81aa1c27efc442845637e4b99619d, type: 3}
+      propertyPath: _FoodDetectionDistance
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 557055197128652805, guid: a4e81aa1c27efc442845637e4b99619d, type: 3}
+      propertyPath: _HunterDetectionDistance
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 8976791743614379783, guid: a4e81aa1c27efc442845637e4b99619d, type: 3}
       propertyPath: m_LocalPosition.x
       value: 3.66
@@ -750,7 +1011,8 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 8
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 5166961083151609938, guid: a4e81aa1c27efc442845637e4b99619d, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -1032,9 +1294,85 @@ PrefabInstance:
       value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 557055197128652805, guid: a4e81aa1c27efc442845637e4b99619d, type: 3}
+      propertyPath: _Hunter
+      value: 
+      objectReference: {fileID: 1197226333}
+    - target: {fileID: 557055197128652805, guid: a4e81aa1c27efc442845637e4b99619d, type: 3}
       propertyPath: _Target
       value: 
       objectReference: {fileID: 1197226333}
+    - target: {fileID: 557055197128652805, guid: a4e81aa1c27efc442845637e4b99619d, type: 3}
+      propertyPath: _AreaCenter
+      value: 
+      objectReference: {fileID: 522472377}
+    - target: {fileID: 557055197128652805, guid: a4e81aa1c27efc442845637e4b99619d, type: 3}
+      propertyPath: _AreaRadius
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 557055197128652805, guid: a4e81aa1c27efc442845637e4b99619d, type: 3}
+      propertyPath: _AreaSize.x
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 557055197128652805, guid: a4e81aa1c27efc442845637e4b99619d, type: 3}
+      propertyPath: _AreaSize.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 557055197128652805, guid: a4e81aa1c27efc442845637e4b99619d, type: 3}
+      propertyPath: _AreaSize.z
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 557055197128652805, guid: a4e81aa1c27efc442845637e4b99619d, type: 3}
+      propertyPath: _EatDistance
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 557055197128652805, guid: a4e81aa1c27efc442845637e4b99619d, type: 3}
+      propertyPath: _LimitRadius
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 557055197128652805, guid: a4e81aa1c27efc442845637e4b99619d, type: 3}
+      propertyPath: _CohesionWeight
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 557055197128652805, guid: a4e81aa1c27efc442845637e4b99619d, type: 3}
+      propertyPath: _AlignmentWeight
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 557055197128652805, guid: a4e81aa1c27efc442845637e4b99619d, type: 3}
+      propertyPath: _BoidMask.m_Bits
+      value: 256
+      objectReference: {fileID: 0}
+    - target: {fileID: 557055197128652805, guid: a4e81aa1c27efc442845637e4b99619d, type: 3}
+      propertyPath: _FoodMask.m_Bits
+      value: 512
+      objectReference: {fileID: 0}
+    - target: {fileID: 557055197128652805, guid: a4e81aa1c27efc442845637e4b99619d, type: 3}
+      propertyPath: _UseCircularArea
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 557055197128652805, guid: a4e81aa1c27efc442845637e4b99619d, type: 3}
+      propertyPath: _ArriveSlowRadius
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 557055197128652805, guid: a4e81aa1c27efc442845637e4b99619d, type: 3}
+      propertyPath: _SeparationWeight
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 557055197128652805, guid: a4e81aa1c27efc442845637e4b99619d, type: 3}
+      propertyPath: _UseCircularLimit
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 557055197128652805, guid: a4e81aa1c27efc442845637e4b99619d, type: 3}
+      propertyPath: _DetectionDistance
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 557055197128652805, guid: a4e81aa1c27efc442845637e4b99619d, type: 3}
+      propertyPath: _FoodDetectionDistance
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 557055197128652805, guid: a4e81aa1c27efc442845637e4b99619d, type: 3}
+      propertyPath: _HunterDetectionDistance
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 8976791743614379783, guid: a4e81aa1c27efc442845637e4b99619d, type: 3}
       propertyPath: m_LocalPosition.x
       value: -3.1
@@ -1187,7 +1525,8 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 8
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 5166961083151609938, guid: a4e81aa1c27efc442845637e4b99619d, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -1519,9 +1858,85 @@ PrefabInstance:
       value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 557055197128652805, guid: a4e81aa1c27efc442845637e4b99619d, type: 3}
+      propertyPath: _Hunter
+      value: 
+      objectReference: {fileID: 1197226333}
+    - target: {fileID: 557055197128652805, guid: a4e81aa1c27efc442845637e4b99619d, type: 3}
       propertyPath: _Target
       value: 
       objectReference: {fileID: 1197226333}
+    - target: {fileID: 557055197128652805, guid: a4e81aa1c27efc442845637e4b99619d, type: 3}
+      propertyPath: _AreaCenter
+      value: 
+      objectReference: {fileID: 522472377}
+    - target: {fileID: 557055197128652805, guid: a4e81aa1c27efc442845637e4b99619d, type: 3}
+      propertyPath: _AreaRadius
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 557055197128652805, guid: a4e81aa1c27efc442845637e4b99619d, type: 3}
+      propertyPath: _AreaSize.x
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 557055197128652805, guid: a4e81aa1c27efc442845637e4b99619d, type: 3}
+      propertyPath: _AreaSize.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 557055197128652805, guid: a4e81aa1c27efc442845637e4b99619d, type: 3}
+      propertyPath: _AreaSize.z
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 557055197128652805, guid: a4e81aa1c27efc442845637e4b99619d, type: 3}
+      propertyPath: _EatDistance
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 557055197128652805, guid: a4e81aa1c27efc442845637e4b99619d, type: 3}
+      propertyPath: _LimitRadius
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 557055197128652805, guid: a4e81aa1c27efc442845637e4b99619d, type: 3}
+      propertyPath: _CohesionWeight
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 557055197128652805, guid: a4e81aa1c27efc442845637e4b99619d, type: 3}
+      propertyPath: _AlignmentWeight
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 557055197128652805, guid: a4e81aa1c27efc442845637e4b99619d, type: 3}
+      propertyPath: _BoidMask.m_Bits
+      value: 256
+      objectReference: {fileID: 0}
+    - target: {fileID: 557055197128652805, guid: a4e81aa1c27efc442845637e4b99619d, type: 3}
+      propertyPath: _FoodMask.m_Bits
+      value: 512
+      objectReference: {fileID: 0}
+    - target: {fileID: 557055197128652805, guid: a4e81aa1c27efc442845637e4b99619d, type: 3}
+      propertyPath: _UseCircularArea
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 557055197128652805, guid: a4e81aa1c27efc442845637e4b99619d, type: 3}
+      propertyPath: _ArriveSlowRadius
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 557055197128652805, guid: a4e81aa1c27efc442845637e4b99619d, type: 3}
+      propertyPath: _SeparationWeight
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 557055197128652805, guid: a4e81aa1c27efc442845637e4b99619d, type: 3}
+      propertyPath: _UseCircularLimit
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 557055197128652805, guid: a4e81aa1c27efc442845637e4b99619d, type: 3}
+      propertyPath: _DetectionDistance
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 557055197128652805, guid: a4e81aa1c27efc442845637e4b99619d, type: 3}
+      propertyPath: _FoodDetectionDistance
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 557055197128652805, guid: a4e81aa1c27efc442845637e4b99619d, type: 3}
+      propertyPath: _HunterDetectionDistance
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 8976791743614379783, guid: a4e81aa1c27efc442845637e4b99619d, type: 3}
       propertyPath: m_LocalPosition.x
       value: 7.57
@@ -1674,7 +2089,8 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 8
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 5166961083151609938, guid: a4e81aa1c27efc442845637e4b99619d, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -1692,9 +2108,85 @@ PrefabInstance:
       value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 557055197128652805, guid: a4e81aa1c27efc442845637e4b99619d, type: 3}
+      propertyPath: _Hunter
+      value: 
+      objectReference: {fileID: 1197226333}
+    - target: {fileID: 557055197128652805, guid: a4e81aa1c27efc442845637e4b99619d, type: 3}
       propertyPath: _Target
       value: 
       objectReference: {fileID: 1197226333}
+    - target: {fileID: 557055197128652805, guid: a4e81aa1c27efc442845637e4b99619d, type: 3}
+      propertyPath: _AreaCenter
+      value: 
+      objectReference: {fileID: 522472377}
+    - target: {fileID: 557055197128652805, guid: a4e81aa1c27efc442845637e4b99619d, type: 3}
+      propertyPath: _AreaRadius
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 557055197128652805, guid: a4e81aa1c27efc442845637e4b99619d, type: 3}
+      propertyPath: _AreaSize.x
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 557055197128652805, guid: a4e81aa1c27efc442845637e4b99619d, type: 3}
+      propertyPath: _AreaSize.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 557055197128652805, guid: a4e81aa1c27efc442845637e4b99619d, type: 3}
+      propertyPath: _AreaSize.z
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 557055197128652805, guid: a4e81aa1c27efc442845637e4b99619d, type: 3}
+      propertyPath: _EatDistance
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 557055197128652805, guid: a4e81aa1c27efc442845637e4b99619d, type: 3}
+      propertyPath: _LimitRadius
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 557055197128652805, guid: a4e81aa1c27efc442845637e4b99619d, type: 3}
+      propertyPath: _CohesionWeight
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 557055197128652805, guid: a4e81aa1c27efc442845637e4b99619d, type: 3}
+      propertyPath: _AlignmentWeight
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 557055197128652805, guid: a4e81aa1c27efc442845637e4b99619d, type: 3}
+      propertyPath: _BoidMask.m_Bits
+      value: 256
+      objectReference: {fileID: 0}
+    - target: {fileID: 557055197128652805, guid: a4e81aa1c27efc442845637e4b99619d, type: 3}
+      propertyPath: _FoodMask.m_Bits
+      value: 512
+      objectReference: {fileID: 0}
+    - target: {fileID: 557055197128652805, guid: a4e81aa1c27efc442845637e4b99619d, type: 3}
+      propertyPath: _UseCircularArea
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 557055197128652805, guid: a4e81aa1c27efc442845637e4b99619d, type: 3}
+      propertyPath: _ArriveSlowRadius
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 557055197128652805, guid: a4e81aa1c27efc442845637e4b99619d, type: 3}
+      propertyPath: _SeparationWeight
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 557055197128652805, guid: a4e81aa1c27efc442845637e4b99619d, type: 3}
+      propertyPath: _UseCircularLimit
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 557055197128652805, guid: a4e81aa1c27efc442845637e4b99619d, type: 3}
+      propertyPath: _DetectionDistance
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 557055197128652805, guid: a4e81aa1c27efc442845637e4b99619d, type: 3}
+      propertyPath: _FoodDetectionDistance
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 557055197128652805, guid: a4e81aa1c27efc442845637e4b99619d, type: 3}
+      propertyPath: _HunterDetectionDistance
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 8976791743614379783, guid: a4e81aa1c27efc442845637e4b99619d, type: 3}
       propertyPath: m_LocalPosition.x
       value: 1.35
@@ -1847,7 +2339,8 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 8
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 5166961083151609938, guid: a4e81aa1c27efc442845637e4b99619d, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -1948,6 +2441,54 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1949355657
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1949355659}
+  - component: {fileID: 1949355658}
+  m_Layer: 0
+  m_Name: FoodSpawner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1949355658
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1949355657}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e55cd1fd422595d4fa8e903fd8c96427, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _FoodPrefab: {fileID: 7800006675234367061, guid: f6e75926ebd840c449856de09d7bbaf3, type: 3}
+  _FoodAmount: 6
+  _SpawnRadius: 20
+  _FoodHeight: 0
+--- !u!4 &1949355659
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1949355657}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -1955,6 +2496,7 @@ SceneRoots:
   - {fileID: 963194228}
   - {fileID: 705507995}
   - {fileID: 504854975}
+  - {fileID: 522472377}
   - {fileID: 1052777778}
   - {fileID: 1863491886}
   - {fileID: 307534954}
@@ -1971,3 +2513,4 @@ SceneRoots:
   - {fileID: 1930095186}
   - {fileID: 1655436907}
   - {fileID: 699186254}
+  - {fileID: 1949355659}

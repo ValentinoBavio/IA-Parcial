@@ -248,7 +248,22 @@ MonoBehaviour:
   _Speed: 4
   _RotationSpeed: 8
   _StopDistance: 1.5
+  _FoodMask:
+    serializedVersion: 2
+    m_Bits: 512
+  _FoodDetectionDistance: 8
+  _EatDistance: 1
+  _ArriveSlowRadius: 2
+  _Hunter: {fileID: 6820144989317589405, guid: 4fdd9e247ee2e1b40afb8373d6755873, type: 3}
+  _HunterDetectionDistance: 6
+  _EvadePredictionTime: 0.5
+  _BoidMask:
+    serializedVersion: 2
+    m_Bits: 512
   _DetectionDistance: 2
   _SeparationWeight: 3
   _AlignmentWeight: 4
   _CohesionWeight: 5
+  _RandomDirectionTime: 2
+  _AreaCenter: {x: 0, y: 0, z: 0}
+  _AreaSize: {x: 20, y: 0, z: 20}
