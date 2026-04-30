@@ -65,13 +65,26 @@ public class ChaseState<T> : States<T>
 
         if (Time.deltaTime > 0)
         {
-            _targetVelocity = (controller.target.position - _lastTargetPosition) / Time.deltaTime;
+            Vector3 newVelocity = (controller.target.position - _lastTargetPosition) / Time.deltaTime;
+            _targetVelocity = Vector3.Lerp(_targetVelocity, newVelocity, 0.2f);
         }
 
         _lastTargetPosition = controller.target.position;
 
-        Vector3 futurePosition = controller.target.position + _targetVelocity * controller.predictionTime;
+        //pursuit
+        float distance = Vector3.Distance(controller.transform.position, controller.target.position);
 
+        
+        float predictionTime = distance / (controller.speed + 0.01f);
+
+        
+        predictionTime = Mathf.Clamp(predictionTime, 0f, controller.maxPredictionTime);
+
+        Vector3 futurePosition = controller.target.position + _targetVelocity * predictionTime;
+
+        controller.predictedPosition = futurePosition;
+
+        
         Vector3 dir = futurePosition - controller.transform.position;
         dir.y = 0;
 
@@ -83,10 +96,11 @@ public class ChaseState<T> : States<T>
 
         dir = dir.normalized;
 
+        
         controller.transform.position += dir * controller.speed * Time.deltaTime;
 
+        
         Quaternion rotation = Quaternion.LookRotation(dir);
-
         controller.transform.rotation = Quaternion.Slerp(
             controller.transform.rotation,
             rotation,

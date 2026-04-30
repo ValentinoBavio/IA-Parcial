@@ -30,6 +30,7 @@ public class EnemyStateController : MonoBehaviour
 
     [Header("Pursuit")]
     public float predictionTime = 0.5f;
+    public float maxPredictionTime = 1f;
 
     [Header("Animation")]
     public float animationSmoothTime = 0.2f;
@@ -42,6 +43,16 @@ public class EnemyStateController : MonoBehaviour
     private void Awake()
     {
         _Animator = GetComponent<Animator>();
+    }
+
+    void OnTriggerEnter(Collider other)
+    {
+        //Entendemos que no habia que usar rigidbody, 
+        if (other.gameObject.layer == LayerMask.NameToLayer("Enemy"))
+        {
+            Debug.Log("PLUMBA");
+            Destroy(other.gameObject);
+        }
     }
 
     private void Start()
@@ -116,6 +127,8 @@ public class EnemyStateController : MonoBehaviour
         target = closestBoid;
     }
 
+    [HideInInspector] public Vector3 predictedPosition;
+
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.red;
@@ -159,5 +172,23 @@ public class EnemyStateController : MonoBehaviour
             Gizmos.color = Color.green;
             Gizmos.DrawSphere(waypoints[currentWaypointIndex].position, 0.3f);
         }
+
+        //Pursuit
+        if (target != null && predictedPosition != Vector3.zero)
+        {
+            
+            Gizmos.color = new Color(1f, 0f, 1f); 
+            Gizmos.DrawLine(transform.position, predictedPosition);
+
+            
+            Gizmos.DrawSphere(predictedPosition, 0.25f);
+
+            
+            Gizmos.color = Color.white;
+            Gizmos.DrawLine(target.position, predictedPosition);
+        }
+
+
+
     }
 }

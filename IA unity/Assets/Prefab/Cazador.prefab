@@ -14,7 +14,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400050, guid: ba24e610e0a338545b447ff44a3cf1cc, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2.46
+      value: 6.31
       objectReference: {fileID: 0}
     - target: {fileID: 400050, guid: ba24e610e0a338545b447ff44a3cf1cc, type: 3}
       propertyPath: m_LocalPosition.y
@@ -22,7 +22,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400050, guid: ba24e610e0a338545b447ff44a3cf1cc, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 9.46
+      value: -26.83
       objectReference: {fileID: 0}
     - target: {fileID: 400050, guid: ba24e610e0a338545b447ff44a3cf1cc, type: 3}
       propertyPath: m_LocalRotation.w
@@ -67,6 +67,12 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 100050, guid: ba24e610e0a338545b447ff44a3cf1cc, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1579030925120766178}
+    - targetCorrespondingSourceObject: {fileID: 100050, guid: ba24e610e0a338545b447ff44a3cf1cc, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2405754512236793787}
+    - targetCorrespondingSourceObject: {fileID: 100050, guid: ba24e610e0a338545b447ff44a3cf1cc, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1266038159491195799}
   m_SourcePrefab: {fileID: 100100000, guid: ba24e610e0a338545b447ff44a3cf1cc, type: 3}
 --- !u!95 &6820144989309863503 stripped
 Animator:
@@ -90,12 +96,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b861c5ff2a8162346b705f3287a1b720, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxEnergy: 60
-  currentEnergy: 60
+  maxEnergy: 12
+  currentEnergy: 12
   energyDrain: 1
-  restDuration: 2
-  speed: 4
+  restDuration: 6
+  speed: 5.5
   rotationSpeed: 10
+  chaseStopDistance: 1.5
+  chaseResumeDistance: 2.2
   waypoints:
   - {fileID: 0}
   - {fileID: 0}
@@ -103,8 +111,65 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   currentWaypointIndex: 0
-  visionRange: 4
+  visionRange: 15
+  boidMask:
+    serializedVersion: 2
+    m_Bits: 256
   target: {fileID: 0}
+  predictionTime: 0.5
+  maxPredictionTime: 1
+  animationSmoothTime: 0.2
   _Animator: {fileID: 6820144989309863503}
   speedAnimacion: 0
+  predictedPosition: {x: 0, y: 0, z: 0}
+--- !u!135 &2405754512236793787
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6820144989317166589}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 2.0078812
+  m_Center: {x: 0, y: 0, z: -0.053424835}
+--- !u!54 &1266038159491195799
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6820144989317166589}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 0
+  m_ImplicitTensor: 0
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
