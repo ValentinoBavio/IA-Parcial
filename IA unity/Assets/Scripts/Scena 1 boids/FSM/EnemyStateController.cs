@@ -90,12 +90,7 @@ public class EnemyStateController : MonoBehaviour
 
     public void SearchTarget()
     {
-        Collider[] boids = Physics.OverlapSphere(
-            transform.position,
-            visionRange,
-            boidMask,
-            QueryTriggerInteraction.Collide
-        );
+        Collider[] boids = Physics.OverlapSphere(transform.position, visionRange, boidMask, QueryTriggerInteraction.Collide);
 
         if (boids.Length <= 0)
         {
@@ -176,14 +171,14 @@ public class EnemyStateController : MonoBehaviour
         //Pursuit
         if (target != null && predictedPosition != Vector3.zero)
         {
-            
-            Gizmos.color = new Color(1f, 0f, 1f); 
+
+            Gizmos.color = new Color(1f, 0f, 1f);
             Gizmos.DrawLine(transform.position, predictedPosition);
 
-            
+
             Gizmos.DrawSphere(predictedPosition, 0.25f);
 
-            
+
             Gizmos.color = Color.white;
             Gizmos.DrawLine(target.position, predictedPosition);
         }
