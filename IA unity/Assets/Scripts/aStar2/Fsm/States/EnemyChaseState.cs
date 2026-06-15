@@ -4,11 +4,20 @@ using System.Collections;
 public class EnemyChaseState : EnemyState
 {
     private Transform playerTransform;
-    private float movementSpeed =4.5f;
-    public EnemyChaseState(Enemy enemy, EnemyStateMachine enemeyStateMachine) : base(enemy, enemeyStateMachine)
-    {
-        playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
 
+    private float movementSpeed = 4.5f;
+
+    private float alertCooldown = 1f;
+    private float alertTimer;
+
+    public EnemyChaseState(
+        Enemy enemy,
+        EnemyStateMachine enemeyStateMachine)
+        : base(enemy, enemeyStateMachine)
+    {
+        playerTransform =
+            GameObject.FindGameObjectWithTag("Player")
+            .transform;
     }
 
     public override void AnimationTriggerEvent(Enemy.AnimationTriggerType triggerType)
@@ -19,8 +28,6 @@ public class EnemyChaseState : EnemyState
     public override void EneterState()
     {
         base.EneterState();
-
-        //Debug.Log("ChaseState activado");
     }
 
     public override void ExistState()
@@ -32,23 +39,34 @@ public class EnemyChaseState : EnemyState
     {
         base.FrameUpdate();
 
+        alertTimer -= Time.deltaTime;
+
         if (!enemy.IsAggroed)
         {
             enemy.StateMachine.ChangeState(enemy.IdleState);
+
             return;
         }
 
-
-        Vector2 moveDirection = (playerTransform.position - enemy.transform.position).normalized;
         
+        enemy.LastKnownPlayerPosition =playerTransform.position;
+
+       
+        if (alertTimer <= 0f)
+        {
+            enemy.AlertNearbyEnemies(playerTransform.position);
+
+            alertTimer = alertCooldown;
+        }
+
+        Vector2 moveDirection =(playerTransform.position- enemy.transform.position).normalized;
+
         enemy.MoveEnemy(moveDirection * movementSpeed);
 
         if (enemy.IsWithinStrikingDistance)
         {
             enemy.StateMachine.ChangeState(enemy.AttackState);
         }
-
-
     }
 
     public override void PhysicsUpdate()
