@@ -10,14 +10,9 @@ public class EnemyChaseState : EnemyState
     private float alertCooldown = 1f;
     private float alertTimer;
 
-    public EnemyChaseState(
-        Enemy enemy,
-        EnemyStateMachine enemeyStateMachine)
-        : base(enemy, enemeyStateMachine)
+    public EnemyChaseState(Enemy enemy,EnemyStateMachine enemeyStateMachine): base(enemy, enemeyStateMachine)
     {
-        playerTransform =
-            GameObject.FindGameObjectWithTag("Player")
-            .transform;
+        playerTransform =GameObject.FindGameObjectWithTag("Player").transform;
     }
 
     public override void AnimationTriggerEvent(Enemy.AnimationTriggerType triggerType)

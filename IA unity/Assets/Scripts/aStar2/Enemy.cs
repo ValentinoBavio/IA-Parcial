@@ -103,18 +103,11 @@ public class Enemy : MonoBehaviour, IDamageable, IEnemyMoveable, ITriggerCheckab
 
     public void ReceiveAlert(Vector2 playerPosition)
     {
-        PathNode startNode =
-            PathfindingManager.Instance.GetClosestNode(
-                transform.position);
+        PathNode startNode =PathfindingManager.Instance.GetClosestNode(transform.position);
 
-        PathNode targetNode =
-            PathfindingManager.Instance.GetClosestNode(
-                playerPosition);
+        PathNode targetNode =PathfindingManager.Instance.GetClosestNode(playerPosition);
 
-        CurrentPath =
-            PathfindingManager.Instance.FindPath(
-                startNode,
-                targetNode);
+        CurrentPath =PathfindingManager.Instance.FindPath(startNode,targetNode);
 
         CurrentPathIndex = 0;
 
