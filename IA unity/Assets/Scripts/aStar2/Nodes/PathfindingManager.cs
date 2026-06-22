@@ -16,8 +16,7 @@ public class PathfindingManager : MonoBehaviour
 
     public PathNode GetClosestNode(Vector2 position)
     {
-        PathNode[] allNodes =
-            FindObjectsOfType<PathNode>();
+        PathNode[] allNodes = FindObjectsOfType<PathNode>();
 
         PathNode closest = null;
 
@@ -25,10 +24,7 @@ public class PathfindingManager : MonoBehaviour
 
         foreach (PathNode node in allNodes)
         {
-            float distance =
-                Vector2.Distance(
-                    position,
-                    node.transform.position);
+            float distance = Vector2.Distance(position, node.transform.position);
 
             if (distance < minDistance)
             {
@@ -41,7 +37,7 @@ public class PathfindingManager : MonoBehaviour
     }
 
 
-    public List<PathNode> FindPath(PathNode startNode,PathNode targetNode)
+    public List<PathNode> FindPath(PathNode startNode, PathNode targetNode)
     {
         List<PathNode> openSet = new();
         HashSet<PathNode> closedSet = new();
@@ -55,20 +51,15 @@ public class PathfindingManager : MonoBehaviour
 
         gScore[startNode] = 0;
 
-        fScore[startNode] =
-            Heuristic(startNode, targetNode);
+        fScore[startNode] =Heuristic(startNode, targetNode);
 
         while (openSet.Count > 0)
         {
-            PathNode current =
-                openSet.OrderBy(n => fScore.GetValueOrDefault(n, Mathf.Infinity))
-                .First();
+            PathNode current =openSet.OrderBy(n => fScore.GetValueOrDefault(n, Mathf.Infinity)).First();
 
             if (current == targetNode)
             {
-                return ReconstructPath(
-                    cameFrom,
-                    current);
+                return ReconstructPath(cameFrom, current);
             }
 
             openSet.Remove(current);
@@ -80,18 +71,13 @@ public class PathfindingManager : MonoBehaviour
                 if (closedSet.Contains(neighbor))
                     continue;
 
-                float tentativeG =
-                    gScore[current]
-                    + Vector2.Distance(
-                        current.transform.position,
-                        neighbor.transform.position);
+                float tentativeG = gScore[current] + Vector2.Distance(current.transform.position, neighbor.transform.position);
 
                 if (!openSet.Contains(neighbor))
                 {
                     openSet.Add(neighbor);
                 }
-                else if (tentativeG >=
-                    gScore.GetValueOrDefault(neighbor, Mathf.Infinity))
+                else if (tentativeG >= gScore.GetValueOrDefault(neighbor, Mathf.Infinity))
                 {
                     continue;
                 }
@@ -100,27 +86,19 @@ public class PathfindingManager : MonoBehaviour
 
                 gScore[neighbor] = tentativeG;
 
-                fScore[neighbor] =
-                    tentativeG
-                    + Heuristic(neighbor, targetNode);
+                fScore[neighbor] = tentativeG + Heuristic(neighbor, targetNode);
             }
         }
 
         return null;
     }
 
-    private float Heuristic(
-        PathNode a,
-        PathNode b)
+    private float Heuristic(PathNode a, PathNode b)
     {
-        return Vector2.Distance(
-            a.transform.position,
-            b.transform.position);
+        return Vector2.Distance(a.transform.position, b.transform.position);
     }
 
-    private List<PathNode> ReconstructPath(
-        Dictionary<PathNode, PathNode> cameFrom,
-        PathNode current)
+    private List<PathNode> ReconstructPath(Dictionary<PathNode, PathNode> cameFrom, PathNode current)
     {
         List<PathNode> totalPath = new();
 
