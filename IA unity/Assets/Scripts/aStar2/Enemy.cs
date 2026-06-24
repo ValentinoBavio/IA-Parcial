@@ -29,6 +29,7 @@ public class Enemy : MonoBehaviour, IDamageable, IEnemyMoveable, ITriggerCheckab
     [SerializeField] private Enemy[] linkedEnemies;
 
     [SerializeField] private LayerMask obstacleLayer; //AGREGADO
+    public Vector2 LastMoveDirection { get; private set; } = Vector2.right;
 
 
 
@@ -140,10 +141,15 @@ public class Enemy : MonoBehaviour, IDamageable, IEnemyMoveable, ITriggerCheckab
 
     #region IEnemyMoveable
     public void MoveEnemy(Vector2 velocity)
+{
+    if (velocity != Vector2.zero)
     {
-        rb.linearVelocity = velocity;
-        CheckForLeftOrRightFacing(velocity);
+        LastMoveDirection = velocity.normalized;
     }
+
+    rb.linearVelocity = velocity;
+    CheckForLeftOrRightFacing(velocity);
+}
 
     public void CheckForLeftOrRightFacing(Vector2 velocity)
     {
