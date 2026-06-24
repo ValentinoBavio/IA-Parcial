@@ -3234,6 +3234,8 @@ MonoBehaviour:
   - {fileID: 436369483}
   linkedEnemies:
   - {fileID: 656672206}
+  - {fileID: 2026615286}
+  - {fileID: 1468040308}
   obstacleLayer:
     serializedVersion: 2
     m_Bits: 1024
@@ -3555,6 +3557,56 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Controlrapidoyfacil
   moveSpeed: 10
+--- !u!1 &567867112
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 567867114}
+  - component: {fileID: 567867113}
+  m_Layer: 0
+  m_Name: PatrolRoute_Red
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &567867113
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 567867112}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f012fc9aadb033a4b949ea2135a2e872, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PatrolRoute
+  patrolNodes:
+  - {fileID: 1983089726}
+  - {fileID: 242025192}
+  - {fileID: 873094031}
+  - {fileID: 1192487113}
+  routeColor: {r: 1, g: 0, b: 0, a: 1}
+--- !u!4 &567867114
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 567867112}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 2.00112, y: 7.61832, z: 0.99817}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &576347443
 GameObject:
   m_ObjectHideFlags: 0
@@ -3843,6 +3895,8 @@ MonoBehaviour:
   - {fileID: 1565600746}
   linkedEnemies:
   - {fileID: 556221231}
+  - {fileID: 2026615286}
+  - {fileID: 1468040308}
   obstacleLayer:
     serializedVersion: 2
     m_Bits: 1024
@@ -5322,6 +5376,54 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!1 &905511106
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 905511108}
+  - component: {fileID: 905511107}
+  m_Layer: 0
+  m_Name: PatrolRoute_Orange
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &905511107
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 905511106}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f012fc9aadb033a4b949ea2135a2e872, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PatrolRoute
+  patrolNodes:
+  - {fileID: 1280668450}
+  - {fileID: 287615045}
+  routeColor: {r: 1, g: 0.32673478, b: 0, a: 1}
+--- !u!4 &905511108
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 905511106}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 2.00112, y: 7.61832, z: 0.99817}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &908135031
 GameObject:
   m_ObjectHideFlags: 0
@@ -5353,7 +5455,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PathfindingManager
   obstacleLayer:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 1024
 --- !u!4 &908135033
 Transform:
   m_ObjectHideFlags: 0
@@ -5729,6 +5831,56 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1012831890}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &1033428657
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1033428659}
+  - component: {fileID: 1033428658}
+  m_Layer: 0
+  m_Name: PatrolRoute_Purple
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1033428658
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1033428657}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f012fc9aadb033a4b949ea2135a2e872, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PatrolRoute
+  patrolNodes:
+  - {fileID: 1521968189}
+  - {fileID: 1444948849}
+  - {fileID: 262286790}
+  - {fileID: 1565600747}
+  routeColor: {r: 0.84260106, g: 0, b: 1, a: 1}
+--- !u!4 &1033428659
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1033428657}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 2.00112, y: 7.61832, z: 0.99817}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1040522849
 GameObject:
   m_ObjectHideFlags: 0
@@ -6367,7 +6519,7 @@ GameObject:
   - component: {fileID: 1131952195}
   - component: {fileID: 1131952194}
   m_Layer: 7
-  m_Name: Plane (1)
+  m_Name: Ground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7790,7 +7942,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 71b3a5e733f760e41b7d335343c40e79, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -8740,6 +8892,8 @@ MonoBehaviour:
   - {fileID: 287615044}
   linkedEnemies:
   - {fileID: 556221231}
+  - {fileID: 656672206}
+  - {fileID: 2026615286}
   obstacleLayer:
     serializedVersion: 2
     m_Bits: 1024
@@ -9962,6 +10116,56 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1609971587}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &1628760898
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1628760900}
+  - component: {fileID: 1628760899}
+  m_Layer: 0
+  m_Name: PatrolRoute_Green
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1628760899
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1628760898}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f012fc9aadb033a4b949ea2135a2e872, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PatrolRoute
+  patrolNodes:
+  - {fileID: 1166879117}
+  - {fileID: 1234184163}
+  - {fileID: 1565600747}
+  - {fileID: 262286790}
+  routeColor: {r: 0.052818, g: 1, b: 0, a: 1}
+--- !u!4 &1628760900
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1628760898}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 2.00112, y: 7.61832, z: 0.99817}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1642970846
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10130,7 +10334,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1665305207}
   m_Layer: 0
-  m_Name: TestParcial2
+  m_Name: Escenario
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -11263,6 +11467,8 @@ MonoBehaviour:
   - {fileID: 262286789}
   linkedEnemies:
   - {fileID: 556221231}
+  - {fileID: 656672206}
+  - {fileID: 1468040308}
   obstacleLayer:
     serializedVersion: 2
     m_Bits: 1024
@@ -11865,3 +12071,7 @@ SceneRoots:
   - {fileID: 564849936}
   - {fileID: 1665305207}
   - {fileID: 2096708615}
+  - {fileID: 567867114}
+  - {fileID: 1033428659}
+  - {fileID: 1628760900}
+  - {fileID: 905511108}
