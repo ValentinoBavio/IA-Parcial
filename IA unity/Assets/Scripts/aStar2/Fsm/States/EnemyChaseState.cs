@@ -10,9 +10,9 @@ public class EnemyChaseState : EnemyState
     private float alertCooldown = 1f;
     private float alertTimer;
 
-    public EnemyChaseState(Enemy enemy,EnemyStateMachine enemeyStateMachine): base(enemy, enemeyStateMachine)
+    public EnemyChaseState(Enemy enemy, EnemyStateMachine enemeyStateMachine) : base(enemy, enemeyStateMachine)
     {
-        playerTransform =GameObject.FindGameObjectWithTag("Player").transform;
+        playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
     }
 
     public override void AnimationTriggerEvent(Enemy.AnimationTriggerType triggerType)
@@ -38,15 +38,13 @@ public class EnemyChaseState : EnemyState
 
         if (!enemy.IsAggroed)
         {
-            enemy.StateMachine.ChangeState(enemy.IdleState);
+            enemy.ReceiveAlert(enemy.LastKnownPlayerPosition);
 
             return;
         }
 
-        
-        enemy.LastKnownPlayerPosition =playerTransform.position;
+        enemy.LastKnownPlayerPosition = playerTransform.position;
 
-       
         if (alertTimer <= 0f)
         {
             enemy.AlertNearbyEnemies(playerTransform.position);
@@ -54,7 +52,7 @@ public class EnemyChaseState : EnemyState
             alertTimer = alertCooldown;
         }
 
-        Vector2 moveDirection =(playerTransform.position- enemy.transform.position).normalized;
+        Vector2 moveDirection = (playerTransform.position - enemy.transform.position).normalized;
 
         enemy.MoveEnemy(moveDirection * movementSpeed);
 

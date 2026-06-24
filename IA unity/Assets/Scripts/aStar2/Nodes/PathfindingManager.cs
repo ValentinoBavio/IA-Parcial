@@ -5,6 +5,7 @@ using System.Linq;
 public class PathfindingManager : MonoBehaviour
 {
     public static PathfindingManager Instance;
+    [SerializeField] private LayerMask obstacleLayer; // AGREGADO
 
     private void Awake()
     {
@@ -14,7 +15,7 @@ public class PathfindingManager : MonoBehaviour
 
 
 
-    public PathNode GetClosestNode(Vector2 position)
+    /*public PathNode GetClosestNode(Vector2 position)
     {
         PathNode[] allNodes = FindObjectsOfType<PathNode>();
 
@@ -34,7 +35,46 @@ public class PathfindingManager : MonoBehaviour
         }
 
         return closest;
+    }*/
+
+    public PathNode GetClosestNode(Vector2 position)
+{
+    PathNode[] allNodes = FindObjectsOfType<PathNode>();
+
+    PathNode closest = null;
+    float minDistance = Mathf.Infinity;
+
+    foreach (PathNode node in allNodes)
+    {
+        Vector2 direction =
+            (Vector2)node.transform.position - position;
+
+        float distance = direction.magnitude;
+
+        if (distance > 0.01f)
+        {
+            RaycastHit2D hit = Physics2D.Raycast(
+                position,
+                direction.normalized,
+                distance,
+                obstacleLayer
+            );
+
+            if (hit.collider != null)
+            {
+                continue;
+            }
+        }
+
+        if (distance < minDistance)
+        {
+            minDistance = distance;
+            closest = node;
+        }
     }
+
+    return closest;
+}
 
 
     public List<PathNode> FindPath(PathNode startNode, PathNode targetNode)

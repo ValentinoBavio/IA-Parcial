@@ -1,4 +1,4 @@
-using UnityEngine;
+/*using UnityEngine;
 
 public class EnemyAlertState : EnemyState
 {
@@ -44,6 +44,93 @@ public class EnemyAlertState : EnemyState
                 enemy.MoveEnemy(Vector2.zero);
 
                 enemy.StateMachine.ChangeState(enemy.IdleState);
+            }
+        }
+    }
+}*/
+
+using UnityEngine;
+
+public class EnemyAlertState : EnemyState
+{
+    private float movementSpeed = 3.5f;
+
+    public EnemyAlertState(
+        Enemy enemy,
+        EnemyStateMachine enemyStateMachine
+    ) : base(enemy, enemyStateMachine)
+    {
+
+    }
+
+    public override void FrameUpdate()
+    {
+        base.FrameUpdate();
+
+        if (enemy.IsAggroed)
+        {
+            enemy.StateMachine.ChangeState(enemy.ChaseState);
+            return;
+        }
+
+        Vector2 targetPosition = enemy.LastKnownPlayerPosition;
+
+        float distanceToTarget = Vector2.Distance(
+            enemy.transform.position,
+            targetPosition
+        );
+
+        if (distanceToTarget < 0.1f)
+        {
+            enemy.MoveEnemy(Vector2.zero);
+            enemy.StateMachine.ChangeState(enemy.IdleState);
+            return;
+        }
+
+        if (enemy.HasLineOfSight(targetPosition))
+        {
+            Vector2 directionToTarget =
+                (targetPosition - (Vector2)enemy.transform.position).normalized;
+
+            enemy.MoveEnemy(directionToTarget * movementSpeed);
+            return;
+        }
+
+        if (enemy.CurrentPath == null || enemy.CurrentPath.Count == 0)
+        {
+            enemy.MoveEnemy(Vector2.zero);
+            enemy.StateMachine.ChangeState(enemy.IdleState);
+            return;
+        }
+
+        if (enemy.CurrentPathIndex >= enemy.CurrentPath.Count)
+        {
+            enemy.MoveEnemy(Vector2.zero);
+            enemy.StateMachine.ChangeState(enemy.IdleState);
+            return;
+        }
+
+        PathNode currentNode =
+            enemy.CurrentPath[enemy.CurrentPathIndex];
+
+        Vector2 direction =
+            ((Vector2)currentNode.transform.position -
+             (Vector2)enemy.transform.position).normalized;
+
+        enemy.MoveEnemy(direction * movementSpeed);
+
+        float distanceToNode = Vector2.Distance(
+            enemy.transform.position,
+            currentNode.transform.position
+        );
+
+        if (distanceToNode < 0.1f)
+        {
+            enemy.CurrentPathIndex++;
+
+            if (enemy.CurrentPathIndex >= enemy.CurrentPath.Count)
+            {
+                enemy.MoveEnemy(Vector2.zero);
             }
         }
     }

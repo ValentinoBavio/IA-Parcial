@@ -28,6 +28,8 @@ public class Enemy : MonoBehaviour, IDamageable, IEnemyMoveable, ITriggerCheckab
 
     [SerializeField] private Enemy[] linkedEnemies;
 
+    [SerializeField] private LayerMask obstacleLayer; //AGREGADO
+
 
 
 
@@ -189,4 +191,32 @@ public class Enemy : MonoBehaviour, IDamageable, IEnemyMoveable, ITriggerCheckab
         PlayFootstepSound
     }
     #endregion
+
+    public bool HasLineOfSight(Vector2 targetPosition)
+{
+    Vector2 origin = transform.position;
+    Vector2 direction = targetPosition - origin;
+
+    float distance = direction.magnitude;
+
+    if (distance <= 0.1f)
+    {
+        return true;
+    }
+
+    RaycastHit2D hit = Physics2D.Raycast(
+        origin,
+        direction.normalized,
+        distance,
+        obstacleLayer
+    );
+
+    Debug.DrawRay(
+        origin,
+        direction.normalized * distance,
+        Color.yellow
+    );
+
+    return hit.collider == null;
+}
 }
