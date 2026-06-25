@@ -6,18 +6,16 @@ public class EnemyAggroCheck : MonoBehaviour
 
     private Enemy enemy;
 
-    [SerializeField]
-    private LayerMask obstacleLayer;
+    [SerializeField] private LayerMask obstacleLayer;
     [SerializeField] private float viewAngle = 90f;
 
     private void Awake()
     {
         PlayerTarget = GameObject.FindGameObjectWithTag("Player");
-
         enemy = GetComponentInParent<Enemy>();
     }
 
-   /* private void OnTriggerStay2D(Collider2D collision)
+    private void OnTriggerStay2D(Collider2D collision)
     {
         if (collision.gameObject != PlayerTarget)
             return;
@@ -26,74 +24,26 @@ public class EnemyAggroCheck : MonoBehaviour
         Vector2 target = PlayerTarget.transform.position;
 
         Vector2 direction = (target - origin).normalized;
-
         float distance = Vector2.Distance(origin, target);
 
-        // Raycast hacia el jugador
-        RaycastHit2D hit = Physics2D.Raycast(
-            origin,
-            direction,
-            distance,
-            obstacleLayer
-        );
+        float angle = Vector2.Angle(enemy.LastMoveDirection, direction);
 
-        // Debug visual
-        Debug.DrawRay(origin, direction * distance, Color.red);
-
-        // Si NO choc� contra una pared
-        if (hit.collider == null)
-        {
-            enemy.SetAggroStatus(true);
-        }
-        else
+        if (angle > viewAngle / 2f)
         {
             enemy.SetAggroStatus(false);
+            return;
         }
-    }*/
 
-    private void OnTriggerStay2D(Collider2D collision)
-{
-    if (collision.gameObject != PlayerTarget)
-        return;
+        RaycastHit2D hit = Physics2D.Raycast(origin, direction, distance, obstacleLayer);
 
-    Vector2 origin = transform.position;
-    Vector2 target = PlayerTarget.transform.position;
-
-    Vector2 direction = (target - origin).normalized;
-    float distance = Vector2.Distance(origin, target);
-
-    float angle = Vector2.Angle(
-        enemy.LastMoveDirection,
-        direction
-    );
-
-    if (angle > viewAngle / 2f)
-    {
-        enemy.SetAggroStatus(false);
-        return;
+        Debug.DrawRay(origin, direction * distance, hit.collider == null ? Color.green : Color.red);
+        
+        enemy.SetAggroStatus(hit.collider == null);
     }
-
-    RaycastHit2D hit = Physics2D.Raycast(
-        origin,
-        direction,
-        distance,
-        obstacleLayer
-    );
-
-    Debug.DrawRay(
-        origin,
-        direction * distance,
-        hit.collider == null ? Color.green : Color.red
-    );
-
-    enemy.SetAggroStatus(hit.collider == null);
-}
 
     private void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.gameObject == PlayerTarget)
-        {
             enemy.SetAggroStatus(false);
-        }
     }
 }

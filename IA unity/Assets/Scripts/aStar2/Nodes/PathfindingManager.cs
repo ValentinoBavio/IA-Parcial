@@ -1,31 +1,36 @@
-using UnityEngine;
 using System.Collections.Generic;
 using System.Linq;
+using UnityEngine;
 
 public class PathfindingManager : MonoBehaviour
 {
     public static PathfindingManager Instance;
-    [SerializeField] private LayerMask obstacleLayer; // AGREGADO
+    [SerializeField] private LayerMask obstacleLayer;
 
     private void Awake()
     {
         Instance = this;
     }
 
-
-
-
-    /*public PathNode GetClosestNode(Vector2 position)
+    public PathNode GetClosestNode(Vector2 position)
     {
         PathNode[] allNodes = FindObjectsOfType<PathNode>();
 
         PathNode closest = null;
-
         float minDistance = Mathf.Infinity;
 
         foreach (PathNode node in allNodes)
         {
-            float distance = Vector2.Distance(position, node.transform.position);
+            Vector2 direction = (Vector2)node.transform.position - position;
+            float distance = direction.magnitude;
+
+            if (distance > 0.01f)
+            {
+                RaycastHit2D hit = Physics2D.Raycast(position, direction.normalized, distance, obstacleLayer);
+
+                if (hit.collider != null)
+                    continue;
+            }
 
             if (distance < minDistance)
             {
@@ -35,47 +40,7 @@ public class PathfindingManager : MonoBehaviour
         }
 
         return closest;
-    }*/
-
-    public PathNode GetClosestNode(Vector2 position)
-{
-    PathNode[] allNodes = FindObjectsOfType<PathNode>();
-
-    PathNode closest = null;
-    float minDistance = Mathf.Infinity;
-
-    foreach (PathNode node in allNodes)
-    {
-        Vector2 direction =
-            (Vector2)node.transform.position - position;
-
-        float distance = direction.magnitude;
-
-        if (distance > 0.01f)
-        {
-            RaycastHit2D hit = Physics2D.Raycast(
-                position,
-                direction.normalized,
-                distance,
-                obstacleLayer
-            );
-
-            if (hit.collider != null)
-            {
-                continue;
-            }
-        }
-
-        if (distance < minDistance)
-        {
-            minDistance = distance;
-            closest = node;
-        }
     }
-
-    return closest;
-}
-
 
     public List<PathNode> FindPath(PathNode startNode, PathNode targetNode)
     {
@@ -91,16 +56,14 @@ public class PathfindingManager : MonoBehaviour
 
         gScore[startNode] = 0;
 
-        fScore[startNode] =Heuristic(startNode, targetNode);
+        fScore[startNode] = Heuristic(startNode, targetNode);
 
         while (openSet.Count > 0)
         {
-            PathNode current =openSet.OrderBy(n => fScore.GetValueOrDefault(n, Mathf.Infinity)).First();
+            PathNode current = openSet.OrderBy(n => fScore.GetValueOrDefault(n, Mathf.Infinity)).First();
 
             if (current == targetNode)
-            {
                 return ReconstructPath(cameFrom, current);
-            }
 
             openSet.Remove(current);
 
@@ -114,22 +77,15 @@ public class PathfindingManager : MonoBehaviour
                 float tentativeG = gScore[current] + Vector2.Distance(current.transform.position, neighbor.transform.position);
 
                 if (!openSet.Contains(neighbor))
-                {
                     openSet.Add(neighbor);
-                }
                 else if (tentativeG >= gScore.GetValueOrDefault(neighbor, Mathf.Infinity))
-                {
                     continue;
-                }
 
                 cameFrom[neighbor] = current;
-
                 gScore[neighbor] = tentativeG;
-
                 fScore[neighbor] = tentativeG + Heuristic(neighbor, targetNode);
             }
         }
-
         return null;
     }
 
@@ -147,10 +103,8 @@ public class PathfindingManager : MonoBehaviour
         while (cameFrom.ContainsKey(current))
         {
             current = cameFrom[current];
-
             totalPath.Insert(0, current);
         }
-
         return totalPath;
     }
 }

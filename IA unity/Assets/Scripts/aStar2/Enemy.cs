@@ -12,7 +12,6 @@ public class Enemy : MonoBehaviour, IDamageable, IEnemyMoveable, ITriggerCheckab
     public bool IsAggroed { get; set; }
     public bool IsWithinStrikingDistance { get; set; }
 
-
     [field: SerializeField] public Transform[] PatrolNodes { get; private set; }
     public int CurrentPatrolIndex { get; set; }
 
@@ -20,18 +19,14 @@ public class Enemy : MonoBehaviour, IDamageable, IEnemyMoveable, ITriggerCheckab
 
     public int CurrentPathIndex { get; set; }
 
-
-
     public EnemyAlertState AlertState { get; set; }
 
     public Vector2 LastKnownPlayerPosition { get; set; }
 
     [SerializeField] private Enemy[] linkedEnemies;
 
-    [SerializeField] private LayerMask obstacleLayer; //AGREGADO
+    [SerializeField] private LayerMask obstacleLayer;
     public Vector2 LastMoveDirection { get; private set; } = Vector2.right;
-
-
 
 
     #region StateVariables
@@ -40,9 +35,6 @@ public class Enemy : MonoBehaviour, IDamageable, IEnemyMoveable, ITriggerCheckab
     public EnemyIdleState IdleState { get; set; }
     public EnemyChaseState ChaseState { get; set; }
     public EnemyAttackState AttackState { get; set; }
-
-
-
 
     #endregion
 
@@ -55,8 +47,6 @@ public class Enemy : MonoBehaviour, IDamageable, IEnemyMoveable, ITriggerCheckab
     #endregion
 
 
-
-
     private void Awake()
     {
         StateMachine = new EnemyStateMachine();
@@ -66,6 +56,7 @@ public class Enemy : MonoBehaviour, IDamageable, IEnemyMoveable, ITriggerCheckab
         AttackState = new EnemyAttackState(this, StateMachine);
         AlertState = new EnemyAlertState(this, StateMachine);
     }
+
     private void Start()
     {
         currentHealth = maxHealth;
@@ -83,21 +74,20 @@ public class Enemy : MonoBehaviour, IDamageable, IEnemyMoveable, ITriggerCheckab
         StateMachine.CurrentEnemyState.PhysicsUpdate();
     }
 
-    #region AlertState
 
+    #region AlertState
 
     public void AlertNearbyEnemies(Vector2 playerPosition)
     {
-        foreach (Enemy otherEnemy in linkedEnemies)
+        foreach(Enemy otherEnemy in linkedEnemies)
         {
-            if (otherEnemy == null)
+            if(otherEnemy == null)
                 continue;
 
-            if (otherEnemy == this)
+            if(otherEnemy == this)
                 continue;
 
-            
-            if (otherEnemy.StateMachine.CurrentEnemyState == otherEnemy.ChaseState)
+            if(otherEnemy.StateMachine.CurrentEnemyState == otherEnemy.ChaseState)
                 continue;
 
             otherEnemy.ReceiveAlert(playerPosition);
@@ -121,45 +111,42 @@ public class Enemy : MonoBehaviour, IDamageable, IEnemyMoveable, ITriggerCheckab
 
     #endregion
 
+
     #region IDamageable
+
     public void Damageable(float damageAmount)
     {
         currentHealth -= damageAmount;
 
-        if (currentHealth <= 0)
-        {
+        if(currentHealth <= 0)
             Die();
-        }
     }
 
     public void Die()
-    {
-
-    }
+    {}
 
     #endregion
 
+
     #region IEnemyMoveable
     public void MoveEnemy(Vector2 velocity)
-{
-    if (velocity != Vector2.zero)
     {
-        LastMoveDirection = velocity.normalized;
-    }
+        if(velocity != Vector2.zero)
+            LastMoveDirection = velocity.normalized;
 
-    rb.linearVelocity = velocity;
-    CheckForLeftOrRightFacing(velocity);
-}
+        rb.linearVelocity = velocity;
+        CheckForLeftOrRightFacing(velocity);
+    }
 
     public void CheckForLeftOrRightFacing(Vector2 velocity)
     {
-        if (isFacingRight && velocity.x < 0f)
+        if(isFacingRight && velocity.x < 0f)
         {
             Vector3 rotator = new Vector3(transform.rotation.x, 180f, transform.rotation.z);
             transform.rotation = Quaternion.Euler(rotator);
             isFacingRight = !isFacingRight;
         }
-        else if (!isFacingRight && velocity.x > 0f)
+        else if(!isFacingRight && velocity.x > 0f)
         {
             Vector3 rotator = new Vector3(transform.rotation.x, 0f, transform.rotation.z);
             transform.rotation = Quaternion.Euler(rotator);
@@ -183,6 +170,7 @@ public class Enemy : MonoBehaviour, IDamageable, IEnemyMoveable, ITriggerCheckab
 
     #endregion
 
+
     #region Animation
 
     private void AnimationTriggerEvent(AnimationTriggerType triggerType)
@@ -196,33 +184,21 @@ public class Enemy : MonoBehaviour, IDamageable, IEnemyMoveable, ITriggerCheckab
         EnemyDamaged,
         PlayFootstepSound
     }
+
     #endregion
 
     public bool HasLineOfSight(Vector2 targetPosition)
-{
-    Vector2 origin = transform.position;
-    Vector2 direction = targetPosition - origin;
-
-    float distance = direction.magnitude;
-
-    if (distance <= 0.1f)
     {
-        return true;
-    }
+        Vector2 origin = transform.position;
+        Vector2 direction = targetPosition - origin;
 
-    RaycastHit2D hit = Physics2D.Raycast(
-        origin,
-        direction.normalized,
-        distance,
-        obstacleLayer
-    );
+        float distance = direction.magnitude;
 
-    Debug.DrawRay(
-        origin,
-        direction.normalized * distance,
-        Color.yellow
-    );
+        if(distance <= 0.1f)
+            return true;
 
+    RaycastHit2D hit = Physics2D.Raycast(origin, direction.normalized, distance, obstacleLayer);
+    Debug.DrawRay(origin, direction.normalized * distance, Color.yellow);
     return hit.collider == null;
-}
+    }
 }
